@@ -20,6 +20,7 @@ from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerId
 from utils import get_size, is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings, get_shortlink, check_verification, get_token, stream_site, get_tutorial, get_text
 from database.users_chats_db import db
 from database.safaridev import db2
+from difflib import SequenceMatcher
 from database.top_search import db3
 from database.ia_filterdb import Media, get_file_details, get_search_results, get_bad_files
 from database.filters_mdb import (
@@ -750,15 +751,12 @@ async def advantage_spoll_choker(bot, query):
                         reply_markup = InlineKeyboardMarkup(safari)
                         total=await bot.get_chat_members_count(query.message.chat.id)
                         await bot.send_message(chat_id=GRP_REPORT_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, total, temp.B_NAME, reqstr.mention, movie)), reply_markup=InlineKeyboardMarkup(safari))
-                    
-from difflib import SequenceMatcher
+                
 
 def get_match_score(a, b):
     return int(SequenceMatcher(None, a.lower(), b.lower()).ratio() * 100)
-
 user_query = query.message.reply_to_message.text if query.message.reply_to_message else query.message.text
 all_results, _, _ = await get_search_results(query.message.chat.id, "", 0, filter=False)
-
 seen = set()
 alt_titles = []
 for file in all_results:
