@@ -755,7 +755,6 @@ async def advantage_spoll_choker(bot, query):
 
 def get_match_score(a, b):
     return int(SequenceMatcher(None, a.lower(), b.lower()).ratio() * 100)
-
 user_query = query.message.reply_to_message.text if query.message.reply_to_message else query.message.text
 all_results, _, _ = await get_search_results(query.message.chat.id, "", 0, filter=False)
 
