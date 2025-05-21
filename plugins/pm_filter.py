@@ -752,7 +752,6 @@ async def advantage_spoll_choker(bot, query):
                         total=await bot.get_chat_members_count(query.message.chat.id)
                         await bot.send_message(chat_id=GRP_REPORT_CHANNEL, text=(script.NORSLTS.format(query.message.chat.title, query.message.chat.id, total, temp.B_NAME, reqstr.mention, movie)), reply_markup=InlineKeyboardMarkup(safari))
                     
-from difflib import SequenceMatcher
 
 def get_match_score(a, b):
     return int(SequenceMatcher(None, a.lower(), b.lower()).ratio() * 100)
